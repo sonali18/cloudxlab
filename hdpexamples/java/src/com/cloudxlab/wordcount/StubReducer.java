@@ -14,7 +14,7 @@ import org.apache.hadoop.mapred.*;
 
 public class StubReducer extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable> {
 
- @Override
+// @Override
   public void reduce(Text t_key, Iterator<IntWritable> values, OutputCollector<Text,IntWritable> output, Reporter reporter) throws IOException {
 		Text key = t_key;
 		int frequencyForCountry = 0;
