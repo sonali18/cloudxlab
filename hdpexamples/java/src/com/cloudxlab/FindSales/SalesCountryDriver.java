@@ -1,5 +1,5 @@
 
-package SalesCountry;
+package com.cloudxlab.FindSales;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
