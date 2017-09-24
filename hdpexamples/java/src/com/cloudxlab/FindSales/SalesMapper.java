@@ -1,4 +1,4 @@
-package SalesCountry;
+package com.cloudxlab.FindSales;
 
 import java.io.IOException;
 
