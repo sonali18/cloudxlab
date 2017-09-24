@@ -12,7 +12,7 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.*;
 
-public class StubReducer extends Reducer<Text, LongWritable, Text, LongWritable> {
+public class StubReducer extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable> {
 
  @Override
   public void reduce(Text t_key, Iterator<IntWritable> values, OutputCollector<Text,IntWritable> output, Reporter reporter) throws IOException {
