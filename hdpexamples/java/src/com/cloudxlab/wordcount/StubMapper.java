@@ -5,27 +5,17 @@ import java.io.IOException;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.mapred.*;
 
-public class StubMapper extends Mapper<Object, Text, Text, LongWritable> {
+public class SalesMapper extends MapReduceBase implements Mapper <LongWritable, Text, Text, IntWritable> {
+	private final static IntWritable one = new IntWritable(1);
 
-  @Override
-  public void map(Object key, Text value, Context context)
-      throws IOException, InterruptedException {
+	public void map(LongWritable key, Text value, OutputCollector <Text, IntWritable> output, Reporter reporter) throws IOException {
 
-	  //Split the line into words with spaces or tabs as separators
-	  String[] words = value.toString().split("[ \t]+");
-	  for(String word:words)
-	  {
-		  //Remove all alpha numeric characters
-		  word = word.replaceAll("[^a-zA-Z0-9]", "");
-
-		  //convert the word to lower case
-		  word = word.toLowerCase();
-
-		Text outKey = new Text(word);
-		LongWritable outValue = new LongWritable(1);
-
-		context.write(outKey, outValue);
-	  }
-  }
+		String valueString = value.toString();
+		String[] SingleCountryData = valueString.split(",");
+		output.collect(new Text(SingleCountryData[7]), one);
+	}
 }
